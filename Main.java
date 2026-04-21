@@ -29,11 +29,11 @@ class Produk implements Exportable{
     }
 }
 
-class kategori extends produk {
+class Kategori extends Produk {
     private String namaKategori;
     private String kodeKategori;
 
-    public kategori(int IdProduk, String NamaProduk, String Deskripsi, double Harga, int JumlahStok, 
+    public Kategori(int IdProduk, String NamaProduk, String Deskripsi, double Harga, int JumlahStok, 
                     String namaKategori, String kodeKategori) {
         super(IdProduk, NamaProduk, Deskripsi, Harga, JumlahStok);
         this.namaKategori = namaKategori;
@@ -53,7 +53,7 @@ class kategori extends produk {
     }
 }
 
-class Rekomendasi extends produk {
+class Rekomendasi extends Produk {
     private int IdRekomendasi;
     private String NamaRekomendasi;
     private int IdPengguna;
