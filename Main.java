@@ -49,11 +49,11 @@ class kategori extends produk implements Exportable {
 
     @Override
     public void exportData() {
-        System.out.println("Exporting data for kategori: " + this.namaKategori);
+        System.out.println("Exporting data for kategori: " + namaKategori + " - " + kodeKategori);
     }
 }
 
-class Rekomendasi extends Produk {
+class Rekomendasi extends produk implements Exportable {
     private int IdRekomendasi;
     private String NamaRekomendasi;
     private int IdPengguna;
@@ -83,28 +83,11 @@ class Rekomendasi extends Produk {
         System.out.println("Exporting rekomendasi: " + NamaRekomendasi + " - " + SkorKepercayaan);
     }
 }
-
-class Kategori extends Produk {
-    private String namaKategori;
-    private String kodeKategori;
-
-    public Kategori(int IdProduk, String NamaProduk, String Deskripsi, double Harga, int JumlahStok, 
-                    String namaKategori, String kodeKategori) {
-
-        super(IdProduk, NamaProduk, Deskripsi, Harga, JumlahStok);
-
-        this.namaKategori = namaKategori;
-        this.kodeKategori = kodeKategori;
-    }
-
-    public void tampilkanKategori() {
-        super.tampilkanProduk();
-        System.out.println("Kategori: " + this.namaKategori);
-        System.out.println("Kode Kategori: " + this.kodeKategori);
-
+class InfoPrinter {
+    public void printInfo(Exportable item) {
+        item.exportData();
     }
 }
-
 public class Main {
     public static void main(String[] args) {
        
@@ -116,5 +99,10 @@ public class Main {
         Rekomendasi rek1 = new Rekomendasi(1, "Pupuk NPK", "Untuk Tanaman", 
                                            15000, 100, 1, "Rekomendasi Subur", 10, "80%", "AI");
         rek1.tampilkanRekomendasi();
+
+        Exportable[] items = {kat1, rek1};
+        for (Exportable item : items) {
+            item.exportData();
+        }
     }
 }
