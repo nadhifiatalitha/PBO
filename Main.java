@@ -29,7 +29,7 @@ class Produk implements Exportable{
     }
 }
 
-class kategori extends produk implements Exportable {
+class kategori extends produk {
     private String namaKategori;
     private String kodeKategori;
 
@@ -49,11 +49,11 @@ class kategori extends produk implements Exportable {
 
     @Override
     public void exportData() {
-        System.out.println("Exporting data for kategori: " + namaKategori + " - " + kodeKategori);
+        System.out.println("Exporting kategori: " + namaKategori + " - " + kodeKategori);
     }
 }
 
-class Rekomendasi extends produk implements Exportable {
+class Rekomendasi extends produk {
     private int IdRekomendasi;
     private String NamaRekomendasi;
     private int IdPengguna;
