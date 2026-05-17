@@ -93,7 +93,28 @@ class InfoPrinter {
         item.exportData();
     }
 }
-
+class Validator {
+    public static boolean validasiNama(String nama) {
+        if (nama == null || nama.trim().isEmpty()) {
+            System.out.println("VALIDASI GAGAL Nama produk tidak boleh kosong!");
+            return false;
+        }
+        return true;
+    }
+     public static boolean validasiHarga(String inputHarga) {
+        try {
+            double harga = Double.parseDouble(inputHarga);
+            if (harga < 0) {
+                System.out.println("VALIDASI GAGAL Harga tidak boleh negatif!");
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("VALIDASI GAGAL Harga harus berupa angka, bukan teks!");
+            return false;
+        }
+    }
+}
 public class Main {
     public static void main(String[] args) {
 
@@ -131,5 +152,24 @@ public class Main {
         } finally {
             System.out.println("Input harga selesai.");
         }
+        
+        System.out.println("=== Validasi Input ===");
+        String nama1 = null;
+        if (Validator.validasiNama(nama1)) {
+            System.out.println("Nama valid: " + nama1);
+        }
+         String nama2 = "Pupuk Organik";
+        if (Validator.validasiNama(nama2)) {
+            System.out.println("Nama valid: " + nama2);
+        }
+         String harga1 = "dua ratus ribu";
+        if (Validator.validasiHarga(harga1)) {
+            System.out.println("Harga valid: " + harga1);
+        }
+         String harga2 = "75000";
+        if (Validator.validasiHarga(harga2)) {
+            System.out.println("Harga valid: " + harga2);
+        }
+
     }
 }
