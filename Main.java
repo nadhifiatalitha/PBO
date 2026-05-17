@@ -110,11 +110,26 @@ public class Main {
         for (Exportable item : items) {
             item.exportData();
         }
-        Kategori katNull = new Kategori(3, null, null, 0, 0, null, null);
-        System.out.println("Panjang nama: " + katNull.NamaProduk.length());
-        String inputHarga = "dua ratus ribu";
-        double hargaParsed = Double.parseDouble(inputHarga);
-        Produk p = new Produk(4, "Cangkul Mini", "Alat kecil", hargaParsed, 5);
-        p.tampilkanProduk();
+        try {
+            Kategori kat2 = new Kategori(3, null, null, 0, 0, null, null);
+            System.out.println("Panjang nama: " + kat2.NamaProduk.length());
+        } catch (NullPointerException e) {
+            System.out.println("Error: NamaProduk tidak boleh null."); 
+            System.out.println("Pesan eror: " + e.getMessage());
+        } finally {
+            System.out.println("Pengecekan selesai.");
+
+        }
+        try {
+            String inputHarga = "dua ratus ribu";
+            double hargaParsed = Double.parseDouble(inputHarga);
+            Produk p = new Produk(4, "Cangkul Mini", "Alat kecil", hargaParsed, 5);
+            p.tampilkanProduk();
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Harga tidak valid, harus berupa angka!");
+            System.out.println("Pesan error: " + e.getMessage());
+        } finally {
+            System.out.println("Input harga selesai.");
+        }
     }
 }
